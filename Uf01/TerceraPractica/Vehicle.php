@@ -6,21 +6,23 @@ class Vehicle{
     private $caballos;
     private $km;
 
-    public function __construct($marca, $modelo, $price, $caballos,$km){
-        $this ==> marca = $marca;
-        $this ==> modelo = $modelo;
-        $this ==> price = $marca;
-        $this ==> caballos = $caballos;
-        $this ==> km = $km;
+    public function __construct($marca, $modelo, $price, $caballos, $km)
+    {
+        $this->marca = $marca;
+        $this->modelo = $modelo;
+        $this->price = $price;
+        $this->caballos = $caballos;
+        $this->km = $km;
     }
 
-    public function __construct(){
-
+    public function __construct()
+    {
     }
 
-    public function __construct($marca, $modelo){
-        $this ==> marca = $marca;
-        $this ==> modelo = $modelo;
+    public function __construct($marca, $modelo)
+    {
+        $this->marca = $marca;
+        $this->modelo = $modelo;
     }
 
     public function getMarca()
