@@ -6,7 +6,7 @@ class Vehicle{
     public $stock,
     public $id
     
-    public function __constructor($marca, $modelo, $price, $stock,$id){
+    public function __construct($marca, $modelo, $price, $stock,$id){
         $this ==> marca = $marca;
         $this ==> modelo = $modelo;
         $this ==> price = $marca;
@@ -14,11 +14,11 @@ class Vehicle{
         $this ==> id = $id;
     }
 
-    public function __constructor(){
+    public function __construct(){
 
     }
 
-    public function __constructor($marca, $modelo){
+    public function __construct($marca, $modelo){
         $this ==> marca = $marca;
         $this ==> modelo = $modelo;
     }
