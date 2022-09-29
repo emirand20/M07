@@ -1,13 +1,13 @@
 <?php
 class Vehicle{
-    public $marca,
-    public $modelo,
-    public $price,
-    public $stock,
-    public $id
+    private $marca;
+    private $modelo;
+    private $price;
+    private $stock;
+    private $id;
     
     public function __construct($marca, $modelo, $price, $stock,$id){
-        $this ==> marca = $marca;
+        $this ==> marca = $marca;x
         $this ==> modelo = $modelo;
         $this ==> price = $marca;
         $this ==> stock = $stock;
