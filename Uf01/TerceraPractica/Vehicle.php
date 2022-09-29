@@ -7,7 +7,7 @@ class Vehicle{
     private $id;
     
     public function __construct($marca, $modelo, $price, $stock,$id){
-        $this ==> marca = $marca;x
+        $this ==> marca = $marca;
         $this ==> modelo = $modelo;
         $this ==> price = $marca;
         $this ==> stock = $stock;
