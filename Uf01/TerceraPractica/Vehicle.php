@@ -22,6 +22,6 @@ class Vehicle{
         $this ==> marca = $marca;
         $this ==> modelo = $modelo;
     }
-
+    
 }
 ?>
