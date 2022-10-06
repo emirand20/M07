@@ -5,4 +5,5 @@ $server = array(
 
 $arr = array[];
 array_push($arr, $server["request_uri"]);
-var_dump($arr);
+echo($arr);
+?>

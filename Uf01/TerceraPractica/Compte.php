@@ -1,26 +1,57 @@
 <?php
-class Compte{
+class Compte {
+
     private $name;
     private $money;
+    private $account;
+    private $cartera;
 
-    public function __construct($name, $money){
-        $this ==> name = $name;
-        $this ==> money = $money;
+    public function __construct($name, $money)
+    {
+        $this->name = $name;
+        $this->money = $money;
+    }
+    public function __construct1()
+    {
+    }
+  
+    public function getname()
+    {
+        return $this->name;
     }
 
-    public funtion añadir($x){
-        $x += $money;
-        return $x;
+   
+    public function setname($name)
+    {
+        $this->name = $name;
     }
 
-    public funtion borrar($x){
-        $x -= $money;
-        return $x;
+  
+    public function getmoney()
+    {
+        return $this->money;
+    }
+
+    public function setmoney($money)
+    {
+        $this->money = $money;
+    }
+    
+    function addmoney($x)
+    {
+        $suma = $this->getmoney() + $x;
+        $this->setmoney($suma);
+        return $suma;
+    }
+
+    function takemoney($y) {
+        $resta = $this->getmoney() - $y;
+        $this->setmoney($resta);
+        return $resta;
     }
 }
-$compte = new Compte(
-    'Javi',
-    100
-);
-var_dump($compte)
-?>
+
+$account = new Compte("Rufo", 6367);
+echo "Mi cuenta bancaria ahora es ". $account->addmoney(94). "<br>";
+
+echo "Mi cuenta bancaria a disminuido a ". $account->takemoney(900);
