@@ -8,12 +8,14 @@ class Compte{
         $this ==> money = $money;
     }
 
-    public funtion add(){
-
+    public funtion añadir($x){
+        $x += $money;
+        return $x;
     }
 
-    public funtion delete(){
-
+    public funtion borrar($x){
+        $x -= $money;
+        return $x;
     }
 }
 $compte = new Compte(
