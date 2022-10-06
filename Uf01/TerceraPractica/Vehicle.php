@@ -1,4 +1,8 @@
 <?php
+/*Esto es una modif
+*/
+/*Esto es la segunda modif
+*/
 class Vehicle{
     private $marca;
     private $modelo;
@@ -15,11 +19,11 @@ class Vehicle{
         $this->km = $km;
     }
 
-    public function __construct()
+    public function __construct1()
     {
     }
 
-    public function __construct($marca, $modelo)
+    public function __construct2($marca, $modelo)
     {
         $this->marca = $marca;
         $this->modelo = $modelo;
