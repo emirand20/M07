@@ -1,12 +1,56 @@
 <?php
 include("db_connection_pdo.php");//Cridem a la nostra connexió PDO amb la BBDD
 //Fem la QUERY per obtindre tota la info de la taula
+include_once 'QuintaPractica/db.php';
+include_once 'QuintaPracica/test.php';
+$connect_PDO = new PDO (“mysql:host=localhost; dbname=products”, “root”, “”);
 $consulta = "SELECT * FROM PRODUCT";
 //Guardarem tota la info de la bbdd a la variable products
 $products = mysqli_query($connexio, $consulta);
-if($products>product.error_errno){
-    echo "Connection faild " . $products->products.error_errno; 
+$connect -> set_charset(“utf8”);
+$inst_sql = “SELECT * FROM products”;
+$result = $connect->query($inst_sql);
+if($products->products_errno){
+    echo "Connection faild " . $products->products_errno; 
 }
+while ($fila = $result->fetch_assoc){
+
+	echo “<table><tr><td>”;
+	
+	echo $fila[‘Huawei p40’] . “</td><td>”;
+	
+	echo $fila[‘OPPO’] . “</td><td>”;
+	
+	echo $fila[‘iPhone 11’] . “</td><td></tr></table>”;
+	
+	echo “<br>”;
+	
+}
+$buscar = $_GET[‘search’];
+$result->execute(array($buscar));
+try {
+
+	$connect_PDO = new PDO (“mysql:host=localhost; dbname=products”, “root”, “”);
+	
+	//Capturem errors de l’objecte Exception per a mostrar en el catch
+	
+	$connect_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	
+	echo “Connexió correcte!”;
+	
+	}catch (Exception $e) {
+	
+	die(“Error: “ . $e->GetMessage();
+	
+	}finally{
+	
+	//buidem la memoria
+	
+	$connect_PDO=null;
+	
+	}
+
+$connect->close();
 ?>
 <table class="table">
     <thead>
@@ -60,8 +104,5 @@ if($products>product.error_errno){
 			</div>
 		</div>
 	</div>
-
-
-
 </body>
 </html>
