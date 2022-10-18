@@ -1,9 +1,5 @@
 <?php
-$server = array(
+$server = [
     "request_uri" => "/hola/luis"
-);
+];
 
-$arr = array[];
-array_push($arr, $server["request_uri"]);
-echo($arr);
-?>
