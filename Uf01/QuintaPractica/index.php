@@ -1,7 +1,4 @@
 <?php
-include("db.php");
-include("test.php");
-
 try {
    //Connexió a la BBDD
    $myCon = new PDO('mysql:host=localhost; dbname=product', 'root', '');
@@ -43,6 +40,7 @@ try {
 </table>
 
 <!-- SECCIÓ PER AFEGIR PRODUCTES -->
+
 <!-- SECCIÓ PER ELIMIAR PRODUCTES -->
 
 <?php 
