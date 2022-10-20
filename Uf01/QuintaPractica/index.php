@@ -1,19 +1,17 @@
 <?php
-
 try {
    //Connexió a la BBDD
-   $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
+   $myCon = new PDO('mysql:host=localhost; dbname=product', 'root', '');
    //Creem la consulta sql
-   $sql ="SELECT * FROM product";
+   $sql = "SELECT * FROM products";
 
 } catch (PDOException $e) {
    echo "error de connexió: " . $e->getMessage() . "<br/>";
    die();
 }
-
 ?>
 
-<table class="table">
+<table class="table table-striped">
    <thead>
    <tr>
        <th scope="col">#</th>
@@ -43,12 +41,33 @@ try {
 
 <!-- SECCIÓ PER AFEGIR PRODUCTES -->
 
+<!-- SECCIÓ PER ELIMIAR PRODUCTES -->
+
+<?php 
+    $id=$_GET['id'];
+    try {
+        //Connexió a la BBDD
+        $myCon = new PDO('mysql:host=localhost; dbname=product', 'root', '');
+        //Creem la consulta sql
+        $sql="DELETE FROM products WHERE id=$id";
+        $stmt = $myCon->prepare($sql);
+        $stmt->execute();
+     } catch (PDOException $e) {
+        echo "error de connexió: " . $e->getMessage() . "<br/>";
+        die();
+     }
+    if($stmt){
+        header('refresh:0;url=index.php?eliminado');
+    }
+
+?>
+
 <div class="container p-4">
    <div class="row">
        <div class="col-md-4">
            <div class="card card-body">
                <!-- A través del mètode POST li enviem les dades del formulari a l'arxiu add_product.php -->
-               <form action="add_product.php" method="POST">
+               <form action="add.php" method="POST">
                    <div class=form-group>
                        <input type="text" name="name" class="form-control" placeholder="Name" autofocus>
                    </div>
