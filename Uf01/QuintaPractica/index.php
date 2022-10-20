@@ -1,16 +1,15 @@
 <?php
 try {
-   //Connexió a la BBDD
-   $myCon = new PDO('mysql:host=localhost; dbname=product', 'root', '');
-   //Creem la consulta sql
-   $sql = "SELECT * FROM products";
-
-} catch (PDOException $e) {
-   echo "error de connexió: " . $e->getMessage() . "<br/>";
-   die();
-}
-?>
-
+    //Connexió a la BBDD
+    $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
+    //Creem la consulta sql
+    $sql ="SELECT * FROM product";
+ 
+ } catch (PDOException $e) {
+    echo "error de connexió: " . $e->getMessage() . "<br/>";
+    die();
+ }
+ ?>
 <table class="table table-striped">
    <thead>
    <tr>
@@ -23,7 +22,6 @@ try {
    </tr>
    </thead>
    <tbody>
-   //S’envia la query a la BBDD i es guarda la informació a product
    <?php foreach ($myCon->query($sql) as $i => $product){ ?>
        <tr>
            <th scope="row"><?php echo $i +1 ?></th> <!-- augmentem el index i -->
@@ -40,8 +38,7 @@ try {
 </table>
 
 <!-- SECCIÓ PER AFEGIR PRODUCTES -->
-
-<!-- SECCIÓ PER ELIMIAR PRODUCTES -->
+<!-- SECCIÓ PER ELIMINAR PRODUCTES -->
 
 <?php 
     $id=$_GET['id'];
@@ -55,7 +52,7 @@ try {
      } catch (PDOException $e) {
         echo "error de connexió: " . $e->getMessage() . "<br/>";
         die();
-     }
+     }	
     if($stmt){
         header('refresh:0;url=index.php?eliminado');
     }
