@@ -2,7 +2,7 @@
 ?>
 <html>
     <head>
-        <title>Pagina de eliminación</title>
+        <title>Pagina de eliminar</title>
     </head>
     <body>
         <h1>La fila ha sido eliminada con éxito</h1>
