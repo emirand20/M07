@@ -57,7 +57,7 @@ try {
         
       <?php if(isset($_GET[$bDele])){
                 $id=$product['NumID'];
-                $mensaje="DELETE FROM products WHERE NumID='$id'";
+                $mensaje="DELETE FROM product WHERE NumID='$id'";
                 mysqli_query($connexio,$mensaje);
                 header("Location: eliminar.php");
             }
@@ -72,20 +72,24 @@ try {
             <td><input type="text" class="Edit" name="Name"></input></td>
             <td><input type="text" class="Edit" name="Description"></input></td>
             <td><input type="text" class="Edit" name="price"></input></td>
+            <td><input type="text" class="Edit" name="NumId"></input></td>
             <td><input type="text" class="Edit" name="q_sold"></input></td>
             <td></td>
             <td><input type="submit" name="submit" value="Submit"></input></td>
             
     </form></tr>
-        <?php+++
+        <?php
         if(isset($_POST["submit"])){
-            $nom=$_POST["Name"];
+            $nombre=$_POST["Name"];
             $des=$_POST["Description"];
             $price=$_POST["price"];
             $quan=$_POST["q_sold"];
-            $mensaje="UPDATE products SET Name='$nom', Description='$des',price='$price', q_sold='$quan' WHERE NumID='$idEd';";
+            $numID = random_int(0, 1000);
+            $mensaje="UPDATE product SET Name='$nombre', Description='$des',price='$price', q_sold='$quan' WHERE NumID='$idEd';";
+            $result = mysqli_query($connexio, $consulta);
             mysqli_query($connexio,$mensaje);
             header("Location: editar.php");
+            header("Location: eliminar.php");
        }
         ?>
     </tbody>
