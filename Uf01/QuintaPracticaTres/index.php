@@ -1,17 +1,15 @@
 <?php
-//db
 try {
     //Connexió a la BBDD
     $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
     //Creem la consulta sql
     $sql ="SELECT * FROM product";
-
-} catch (PDOException $e) {
+ 
+ } catch (PDOException $e) {
     echo "error de connexió: " . $e->getMessage() . "<br/>";
     die();
-}
-
-?>
+ }
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,10 +40,10 @@ try {
     </tr>
     </thead>
     <tbody>
-      <?php foreach ($products as $i => $product){ 
-            $bEdit="botonEdit$i";
-            $bDele="botonDelete$i";
-            ?>
+      <?php foreach ($myCon->query($sql) as $i => $product){ 
+        $bEdit="botonEdit$i";
+        $bDele="botonDelete$i";
+        ?>
         <tr>
             <th scope="row"><?php echo $i +1 ?></th> <!-- augmentem el index i -->
             <td><?php echo $product['Name'] ?></td> <!--Accedim a Name-->
@@ -79,7 +77,7 @@ try {
             <td><input type="submit" name="submit" value="Submit"></input></td>
             
     </form></tr>
-        <?php
+        <?php+++
         if(isset($_POST["submit"])){
             $nom=$_POST["Name"];
             $des=$_POST["Description"];
@@ -88,8 +86,7 @@ try {
             $mensaje="UPDATE products SET Name='$nom', Description='$des',price='$price', q_sold='$quan' WHERE NumID='$idEd';";
             mysqli_query($connexio,$mensaje);
             header("Location: editar.php");
-            header("Location: eliminar.php");
-        }
+       }
         ?>
     </tbody>
    </table> 
