@@ -1,4 +1,5 @@
-<?php?>
+<?php
+?>
 <html>
     <head>
         <title>Pagina de eliminación</title>
