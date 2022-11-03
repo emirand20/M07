@@ -1,51 +1,55 @@
 <?php
-
-include 'db_connection_pdo.php';
+// 1-Conexion con PDO
+try {
+    //Connexió a la BBDD
+    $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
+    // 2 - SQL INSERT
+    //$sql = 'INSERT INTO products ( Name, Description, price, NumId, q_sold) VALUES ( ?, ?, ?, ?,? )';
+ 
+ } catch (PDOException $e) {
+    echo "error de connexió: " . $e->getMessage() . "<br/>";
+    die();
+ }
 
 $productSaved = FALSE;
 
-if (isset($_POST['submit'])) {
+// Comprueba si llegan los datos por post
+if (isset($_POST['add_product'])){
+    $nom = $_POST['name'];
+    $descripcio = $_POST['description'];
+    $preu = $_POST['price'];
+    $qsold = $_POST['qsold'];
+    $numID = random_int(0, 1000);
 
-    $productName = isset($_POST['name']) ? $_POST['name'] : '';
-    $productDescription = isset($_POST['description']) ? $_POST['description'] : '';
-    $productPrice = isset($_POST['price']) ? $_POST['price'] : 0;
-    $productQuantity = isset($_POST['quantity']) ? $_POST['quantity'] : 0;
-
-
-    /*
-     * Validate posted values.
-     */
-    if (empty($productName)) {
+    //Validate posted values.
+    if (empty($nom)) {
         $errors[] = 'Please provide a product name.';
     }
 
-    if (empty($productDescription)) {
+    if (empty($descripcio)) {
         $errors[] = 'Please provide a description.';
     }
 
-    if (empty($productPrice)) {
+    if (empty($preu)) {
         $errors[] = 'Please provide a description.';
     }
 
-    if ($productQuantity == 0) {
-        $errors[] = 'Please provide the quantity.';
+    if ($qsold == 0) {
+        $errors[] = 'Please provide the q_spld.';
+    }
+
+    if ($numID == 0) {
+        $errors[] = 'Please provide the NumId.';
     }
 
     if (!isset($errors)) {
 
-        $sql = 'INSERT INTO products (
-                    name,
-                    description,
-                    price,
-                    quantity
-                ) VALUES (
-                    ?, ?, ?,?
-                )';
+        $sql = 'INSERT INTO products ( Name, Description, price, NumId, q_sold) VALUES ( ?, ?, ?, ?,? )';
 
         $statement = $connexion->prepare($sql);
 
 
-        $statement->bind_param('sis', $productName, $productDescription,$productPrice, $productQuantity);
+        $statement->bind_param('sis', $nom, $descripcio,$preu, $qsold, $numID);
 
 
         $statement->execute();
