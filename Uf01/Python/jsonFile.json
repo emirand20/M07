@@ -1,0 +1,5 @@
+{
+    "id": "https://aaa",
+    "$schema": "https://json.schemastore.org/babelrc",
+    "type": "object"
+}
